@@ -1,0 +1,111 @@
+@import '../../../main-styles.scss';
+
+
+.title {
+  font-family: 'Lato';
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.task-manager-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 1000px;
+  max-height: 600px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  // background: whitesmoke;
+  padding: 42px;
+  border-radius: 8px 0 0 8px;
+  margin-right: 0.5px;
+}
+
+.tasks-list-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 42px;
+  border-radius: 0 8px 8px 0;
+  margin-left: 0.5px;
+}
+
+.list-menu {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  flex-grow: 1;
+
+  .list-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 8px 0 0 8px;
+    width: 100%;
+    color: #5f5f55;
+    margin-bottom: 5px;
+
+    &:hover {
+      background: $light;
+    }
+
+    &.is-active {
+      background-color: #cff8ef;
+      color: $dark-green;
+    }
+  }
+}
+
+.task {
+  background: white;
+  padding: 15px 20px;
+  border-radius: 0 8px 8px 0;
+  margin-top: 10px;
+
+  // not(.complete) would make all compeleted tasks unclickable but others clickable
+  &:not(.complete) {
+    // Hovering over the task item shows it as clickable
+    // The better option which I would implement at the end of the tutorial 
+    // would be to have a checkbox by the side so when it is clicked, it completes the task
+    // While clicking on the task takes you to edit mode.
+    // An X or delete icon on the right when clicked deletes the task.
+    // NOTE TO SELF, If it is not included, add an archive button for archive function.
+    cursor: pointer;
+
+    // This class makes the task item shrink in size to show a click action
+    &:active {
+      transform: scale(0.95);
+    }
+
+    // Animation on the shadow on the task item
+    transition: box-shadow 0.3s ease,
+    transform 0.3s ease;
+
+    // Task item shadow effect
+    &:hover {
+      box-shadow: 0 0 3px 5px #eeeeee;
+    }
+
+  }
+
+  &.complete {
+    text-decoration: line-through;
+    opacity: 0.8;
+
+    // This color makes it a greyish color to indicate it is not clickable, just a nice UI thing
+    background-color: #efefef;
+  }
+}
