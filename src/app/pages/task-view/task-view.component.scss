@@ -27,6 +27,7 @@
 }
 
 .tasks-list-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -101,4 +102,15 @@
     // This color makes it a greyish color to indicate it is not clickable, just a nice UI thing
     background-color: #efefef;
   }
+}
+
+
+.circle-add-button {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  // background: $primary;
+  bottom: 40px;
+  right: 40px;
+  border-radius: 50%;
 }
