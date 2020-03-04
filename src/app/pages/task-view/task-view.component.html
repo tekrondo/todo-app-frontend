@@ -8,18 +8,12 @@
       </h1>
 
       <div class="list-menu">
-        <a class="list-menu-item is-active">
-          <p>List #1</p>
-        </a>
-        <a class="list-menu-item">
-          <p>List #1</p>
-        </a>
-        <a class="list-menu-item">
-          <p>List #1</p>
+        <a class="list-menu-item" *ngFor="let list of lists" [routerLink]="['/lists', list._id]">
+          <p> {{ list.title }} </p>
         </a>
       </div>
 
-      <button class="button is-primary has-text-white" (click)="createNewList()">+New List</button>
+      <button class="button is-primary has-text-white" routerLink='/new-list'>+ New List</button>
 
     </div>
 
@@ -29,17 +23,9 @@
         Tasks
       </h1>
 
-      <div class="task">
-        <p>This is something to do</p>
-      </div>
-      <div class="task">
-        <p>This is something to do</p>
-      </div>
-      <div class="task complete">
-        <p>This is something to do</p>
-      </div>
+      <div class="task" *ngFor="let task of tasks">
+        <p> {{ task.title }} </p> </div>
 
     </div>
-
   </div>
 </div>
