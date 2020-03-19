@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from 'src/app/services/task.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Task } from 'src/app/models/task.model';
+import { List } from 'src/app/models/list.model';
 
 @Component({
   selector: 'app-task-view',
@@ -9,8 +11,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 })
 export class TaskViewComponent implements OnInit {
 
-  lists: any[];
-  tasks: any[];
+  lists: List[];
+  tasks: Task[];
 
   constructor(
     private taskService: TaskService,
@@ -18,16 +20,25 @@ export class TaskViewComponent implements OnInit {
     private router: Router
     ) { }
 
+  onTaskCompleted(task: Task) {
+    console.log(task)
+    this.taskService.completed(task).subscribe(() => {
+      console.log("Completed Successfully");
+      task.completed = !task.completed;
+    })
+  }
+
   ngOnInit() {
 
     this.route.params.subscribe((params: Params) => {
-        this.taskService.getTasks(params.listId).subscribe((tasks: any[]) => {
+        this.taskService.getTasks(params.listId).subscribe((tasks: Task[]) => {
           this.tasks = tasks;
         });
       }
     )
 
-    this.taskService.getLists().subscribe((lists: any[]) => {
+    this.taskService.getLists().subscribe((lists: List[]) => {
+      // @ts-ignore this will cause typescript to ignore the error of Property '_value' does not exist on type 'Observable<UrlSegment[]> since _value is undefined on page load.
       let urlValue = this.route.url._value[1];
       
       if( urlValue== undefined) {

@@ -70,7 +70,7 @@
   margin-top: 10px;
 
   // not(.complete) would make all compeleted tasks unclickable but others clickable
-  &:not(.complete) {
+  &:not(.completed) {
     // Hovering over the task item shows it as clickable
     // The better option which I would implement at the end of the tutorial 
     // would be to have a checkbox by the side so when it is clicked, it completes the task
@@ -95,7 +95,7 @@
 
   }
 
-  &.complete {
+  &.completed {
     text-decoration: line-through;
     opacity: 0.8;
 
