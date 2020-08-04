@@ -26,7 +26,7 @@
       <div class="task" *ngFor="let task of tasks" (click)="onTaskCompleted(task)" [ngClass]="{ 'completed' : task.completed }">
         <p> {{ task.title }} </p> 
       </div>
-
+      <h3 *ngIf="tasks.length === 0 " class="h3 text-at-centre">There are no tasks in this list, consider creating a task</h3>
         <button class=" button is-primary circle-add-button" routerLink="./new-task">
           <img src="../../../assets/plus-icon.svg">
         </button>
